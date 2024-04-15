@@ -20,7 +20,19 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`font-sans ${inter.variable}`}>{children}</body>
+      <body className={`font-sans ${inter.variable} flex flex-col gap-4`}>
+        <TopNav />
+        {children}
+      </body>
     </html>
+  );
+}
+
+function TopNav() {
+  return (
+    <nav className="flex w-full items-center justify-between border-b p-4 text-xl font-semibold">
+      <div>Gallery</div>
+      <div>Sign In</div>
+    </nav>
   );
 }
