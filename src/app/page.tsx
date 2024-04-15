@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { mock } from "node:test";
+/* eslint-disable @next/next/no-img-element */
 import { db } from "~/server/db";
+
+export const dynamic = "force-dynamic";
 
 const mockUrls = [
   "https://utfs.io/f/39f40ebb-e265-4a30-8fe4-7dfc118412bf-zcuagf.png",
