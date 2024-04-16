@@ -1,7 +1,18 @@
-export default function PhotoModal({
+import { getMyImage } from "~/server/queries";
+
+export default async function PhotoModal({
   params: { id: photoId },
 }: {
   params: { id: string };
 }) {
-  return <div>{photoId}</div>;
+  const idAsNumber = Number(photoId);
+  if (Number.isNaN(idAsNumber)) throw new Error("Invalid id");
+
+  const image = await getMyImage(idAsNumber);
+
+  return (
+    <div>
+      <img className="h-42" src={image.url} />
+    </div>
+  );
 }
