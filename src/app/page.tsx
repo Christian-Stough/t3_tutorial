@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { SignedIn, SignedOut } from "@clerk/nextjs";
 import Image from "next/image";
-import { db } from "~/server/db";
+import Link from "next/link";
+
 import { getMyImages } from "~/server/queries";
 
 export const dynamic = "force-dynamic";
@@ -28,13 +29,15 @@ async function Images() {
     <div className="flex flex-wrap justify-center gap-2">
       {images.map((image) => (
         <div key={image.id} className="flex h-fit w-fit flex-col gap-2">
-          <Image
-            src={image.url}
-            alt="mock"
-            style={{ objectFit: "contain" }}
-            width={400}
-            height={400}
-          />
+          <Link href={`/img/${image.id}`}>
+            <Image
+              src={image.url}
+              alt="mock"
+              style={{ objectFit: "contain" }}
+              width={400}
+              height={400}
+            />
+          </Link>
           <div>{image.name}</div>
         </div>
       ))}
